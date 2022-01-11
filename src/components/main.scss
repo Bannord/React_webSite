@@ -1,0 +1,28 @@
+* {
+  list-style: none;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+
+  background-color: #e7f6ff;
+}
+
+.mane-wrapper {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+}
+
+.allCards {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.all {
+  padding: 40px;
+}
