@@ -1,6 +1,6 @@
 import "./CartDrawer.scss";
 
-function CartDrawer({ img, title, price, onRemove, onClose, items = [] }) {
+function CartDrawer({ onRemove, onClose, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer">
