@@ -18,7 +18,7 @@ function CartDrawer({ onRemove, onClose, items = [] }) {
           <div className="cartsRow">
             <div className="">
               {items.map((obj) => (
-                <div className="cartItem">
+                <div className="cartItem" key={obj.id}>
                   <div
                     style={{ backgroundImage: `url(${obj.img})` }}
                     className="cartItemImg"

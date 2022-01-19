@@ -15,7 +15,7 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   const onRemoveAddCart = (id) => {
-    axios.delete(`https://61d88d72e6744d0017ba8bba.mockapi.io/cart ${id}`);
+    axios.delete(`https://61d88d72e6744d0017ba8bba.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 

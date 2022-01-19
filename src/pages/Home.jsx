@@ -2,25 +2,18 @@ import axios from "axios";
 import React from "react";
 import CardProduct from "../components/userCard/CardProduct";
 
-export default function Home(setFavorites, setCartItems, cartItems) {
+export default function Home() {
   const [items, setItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
+  const [cartItems, setCartItems] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
 
   const onAddToFavorite = (obj) => {
     axios.post("https://61d88d72e6744d0017ba8bba.mockapi.io/favorites", obj);
 
-    setFavorites((prev) => [...cartItems, obj]);
+    setFavorites(() => [...cartItems, obj]);
   };
 
-  const AddToCart = (obj) => {
-    axios.post("https://61d88d72e6744d0017ba8bba.mockapi.io/cart", obj);
-
-    setCartItems((prev) => [...cartItems, obj]);
-  };
-
-  const onChangeInput = (event) => {
-    setSearchValue(event.target.value);
-  };
   React.useEffect(() => {
     axios
       .get("https://61d88d72e6744d0017ba8bba.mockapi.io/items")
@@ -28,6 +21,17 @@ export default function Home(setFavorites, setCartItems, cartItems) {
         setItems(res.data);
       });
   }, []);
+
+  const AddToCart = (obj) => {
+    axios.post("https://61d88d72e6744d0017ba8bba.mockapi.io/cart", obj);
+
+    setCartItems(() => [...cartItems, obj]);
+  };
+
+  const onChangeInput = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <div className="all">
       <div className="titleWrapper">
