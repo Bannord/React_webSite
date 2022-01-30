@@ -1,6 +1,7 @@
 * {
   list-style: none;
 }
+
 body {
   margin: 0px;
   padding: 0px;
@@ -25,4 +26,40 @@ body {
 
 .all {
   padding: 40px;
+
+  .titleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .searchBlock {
+    display: flex;
+    border: 1px solid #f3f3f3;
+    border-radius: 10px;
+    padding: 0 15px;
+    position: relative;
+
+    img {
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      &:active {
+        border: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .allCards {
+    justify-content: center;
+  }
 }

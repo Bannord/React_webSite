@@ -1,21 +1,25 @@
 import CardProduct from "../components/userCard/CardProduct";
 import React from "react";
 
-function Favorites({ items }) {
+import AppContext from "../components/context/context";
+
+function Favorites({ onAddToFavorite }) {
+  const { favorites } = React.useContext(AppContext);
+
   return (
     <div className="all">
       <div className="titleWrapper">
-        <div className="allCards">
-          {items.map((item, index) => (
-            <CardProduct
-              key={index}
-              title={item.title}
-              price={item.price}
-              img={item.img}
-              favorited={true}
-            />
-          ))}
-        </div>
+        <h1>Мои закладки</h1>
+      </div>
+      <div className="allCards">
+        {favorites.map((item, index) => (
+          <CardProduct
+            key={index}
+            favorited={true}
+            onFavorite={onAddToFavorite}
+            {...item}
+          />
+        ))}
       </div>
     </div>
   );
