@@ -1,33 +1,31 @@
-import axios from "axios";
 import React from "react";
 import CardProduct from "../components/userCard/CardProduct";
+import AppContext from "../components/context/context";
 
-export default function Home(setFavorites, setCartItems, cartItems) {
-  const [items, setItems] = React.useState([]);
+export default function Home({ onAddToFavorite, isLoading }) {
+  const { items, AddToCart } = React.useContext(AppContext);
+
+  const renderItems = () => {
+    const filterItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLocaleLowerCase())
+    );
+    return (isLoading ? [...Array(10)] : filterItems).map((item, index) => (
+      <CardProduct
+        key={index}
+        {...item}
+        onFavorite={(obj) => onAddToFavorite(obj)}
+        onPlus={(obj) => AddToCart(obj)}
+        isLoading={isLoading}
+      />
+    ));
+  };
+
   const [searchValue, setSearchValue] = React.useState("");
-
-  const onAddToFavorite = (obj) => {
-    axios.post("https://61d88d72e6744d0017ba8bba.mockapi.io/favorites", obj);
-
-    setFavorites((prev) => [...cartItems, obj]);
-  };
-
-  const AddToCart = (obj) => {
-    axios.post("https://61d88d72e6744d0017ba8bba.mockapi.io/cart", obj);
-
-    setCartItems((prev) => [...cartItems, obj]);
-  };
 
   const onChangeInput = (event) => {
     setSearchValue(event.target.value);
   };
-  React.useEffect(() => {
-    axios
-      .get("https://61d88d72e6744d0017ba8bba.mockapi.io/items")
-      .then((res) => {
-        setItems(res.data);
-      });
-  }, []);
+
   return (
     <div className="all">
       <div className="titleWrapper">
@@ -40,22 +38,7 @@ export default function Home(setFavorites, setCartItems, cartItems) {
           <input onChange={onChangeInput} placeholder="Поиск..." />
         </div>
       </div>
-      <div className="allCards">
-        {items
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLocaleLowerCase())
-          )
-          .map((item, index) => (
-            <CardProduct
-              key={index}
-              title={item.title}
-              price={item.price}
-              img={item.img}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-              onPlus={(obj) => AddToCart(obj)}
-            />
-          ))}
-      </div>
+      <div className="allCards">{renderItems()}</div>
     </div>
   );
 }

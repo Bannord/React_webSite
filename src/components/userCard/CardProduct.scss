@@ -14,8 +14,8 @@
     cursor: pointer;
   }
   .cardImg {
-    width: 133px;
-    height: 112px;
+    width: 100%;
+    height: 135px;
   }
 
   .cardTitle {
@@ -50,6 +50,11 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+}
+
+.LoaderPrew {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 850px) {
