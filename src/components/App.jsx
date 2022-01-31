@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./main.scss";
 import axios from "axios";
 
-import Headers from "./header/header";
+import Header from "./header/Header";
 import CartDrawer from "./cartDrawer/CartDrawer";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
@@ -12,15 +12,16 @@ import AppContext from "./context/context";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
-  const [items, setItems] = React.useState([]);
   const [favorites, setFavorites] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+
   const [isLoading, setIsLoading] = React.useState(true);
+  const [items, setItems] = React.useState([]);
 
   const onAddToFavorite = async (obj) => {
     try {
       if (favorites.find((favObj) => favObj.id === obj.id)) {
-        axios.delete(
+        await axios.delete(
           `https://61d88d72e6744d0017ba8bba.mockapi.io/favorites/${obj.id}`
         );
         setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
@@ -97,7 +98,7 @@ function App() {
     >
       <div className="mane-wrapper">
         <CartDrawer onClose={() => setCartOpened(false)} opened={cartOpened} />
-        <Headers onClickCart={() => setCartOpened(true)} />
+        <Header onClickCart={() => setCartOpened(true)} />
         <Routes>
           <Route
             path="/"
