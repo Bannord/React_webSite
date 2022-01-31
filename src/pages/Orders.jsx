@@ -32,7 +32,7 @@ function Favorites() {
       <div className="titleWrapper">
         <h1>Мои Заказы</h1>
       </div>
-      <div className="allCards">
+      <div className="cardsRow">
         {(isLoading ? [...Array(10)] : orders).map((item, index) => (
           <CardProduct key={index} {...item} isLoading={isLoading} />
         ))}

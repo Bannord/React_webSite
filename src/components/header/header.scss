@@ -4,7 +4,7 @@ header {
 
   align-items: center;
   padding: 40px;
-
+  background: var(--background-header);
   border-bottom: 1px solid #eaeaea;
 
   .headerLeft {
@@ -18,7 +18,11 @@ header {
 
   .headerInfo {
     .headerTitle {
+      color: rgb(133, 130, 130);
       text-transform: uppercase;
+    }
+    p {
+      color: rgb(133, 130, 130);
     }
   }
   h3,
@@ -42,13 +46,20 @@ header {
   .item {
     cursor: pointer;
   }
+  .themeIcon {
+    width: 25px;
+    height: 23px;
+    opacity: 0.5;
+    margin: auto 0;
+  }
 
   .item + .item {
-    margin-right: 30px;
+    margin-right: 20px;
   }
   .item:first-child {
-    margin-right: 30px;
+    margin-right: 10px;
   }
+
   // .item:last-child {
   //   // margin-right: 0px;
   // }

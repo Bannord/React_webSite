@@ -1,3 +1,5 @@
+@import "./Theme/styles.scss";
+
 * {
   list-style: none;
 }
@@ -6,8 +8,7 @@ body {
   margin: 0px;
   padding: 0px;
   text-decoration: none;
-
-  background-color: #e7f6ff;
+  background: #e7f6ff;
 }
 
 .mane-wrapper {
@@ -20,7 +21,18 @@ body {
 
 .allCards {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
+@media (max-width: 1001px) {
+  .cardsRow {
+    justify-content: center;
+  }
+}
+
+.cardsRow {
+  display: flex;
   flex-wrap: wrap;
 }
 

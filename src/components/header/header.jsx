@@ -3,16 +3,12 @@ import "./header.scss";
 import React from "react";
 
 import { useCart } from "../hooks/useCart";
-// import { useSelector } from "react-redux";
-// const { totalPrice } = useSelector(({ cart }) => ({
-//   totalPrice: cart.totalPrice,
-// }));
 
-function Headers(props) {
+function Header(props) {
   const { totalPrice } = useCart();
 
   return (
-    <header>
+    <header className="header">
       <Link to="/" style={{ textDecoration: "none" }}>
         <div className="headerLeft">
           <img className="mainLogo" src="/img/main-logo.png" alt="Logo" />
@@ -95,4 +91,4 @@ function Headers(props) {
   );
 }
 
-export default Headers;
+export default Header;
