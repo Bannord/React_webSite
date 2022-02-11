@@ -83,6 +83,10 @@ function App() {
     return cartItems.some((obj) => Number(obj.parentId) === Number(id));
   };
 
+  const isItemFavorited = (id) => {
+    return cartItems.some((obj) => Number(obj.parentId) === Number(id));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -94,6 +98,7 @@ function App() {
         setCartItems,
         onAddToFavorite,
         AddToCart,
+        isItemFavorited,
       }}
     >
       <div className="mane-wrapper">
