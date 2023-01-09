@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./main.scss";
 import axios from "axios";
 
-import Header from "./header/Header";
+import Header from "./header/header";
 import CartDrawer from "./cartDrawer/CartDrawer";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
